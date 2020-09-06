@@ -4,7 +4,8 @@ This example project demonstrates on how to use Amazon Chime SDK and create a si
 
 Checkout the project, and do a
 
-```yarn install
+```
+yarn install
 sam build
 sam deploy
 ```
