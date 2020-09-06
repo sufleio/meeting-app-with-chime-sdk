@@ -1,4 +1,5 @@
 var startButton = document.getElementById("start-button");
+var stopButton = document.getElementById("stop-button");
 
 var urlParams = new URLSearchParams(window.location.search);
 
@@ -30,6 +31,7 @@ if (!isMeetingHost) {
     startButton.innerText = "Join!";
 } else {
     startButton.innerText = "Start!";
+    stopButton.style.display = "block";
 }
 
 startButton.style.display = "block";
@@ -127,9 +129,9 @@ async function stop() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("start-button").addEventListener("click", start);
+    startButton.addEventListener("click", start);
 
     if (isMeetingHost) {
-        
+        stopButton.addEventListener("click", stop);
     }
 });
