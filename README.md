@@ -6,6 +6,9 @@ Checkout the project, and do a
 
 ```yarn install
 sam build
-sam deploy```
+sam deploy
+```
 
-Click start, then send link to your friends.
+Click `Start`, then send the link to your friends.
+
+You can check out blog post about this project at https://sufle.io/blog/serverless-meetings-with-amazon-chime-sdk
