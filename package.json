@@ -1,0 +1,17 @@
+{
+  "name": "meeting-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.743.0",
+    "serverless-aws-static-file-handler": "^2.0.5",
+    "uuid": "^8.3.0"
+  }
+}

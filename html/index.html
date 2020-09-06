@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Serverless Meetings</title>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <script src="assets/js/amazon-chime-sdk.min.js"></script>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <style>
+      #video-list video {
+        width: 600px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+        <h1>Welcome to Serverless Meetings!</h1>
+        <audio style="display: none" id="meeting-audio"></audio>
+        <button type="button" id="start-button" style="display: none;"></button>
+        <p id="meeting-link"></p>
+        <div id="video-list">
+
+        </div>
+        <script src="assets/js/app.js"></script>
+  </body>
+</html>

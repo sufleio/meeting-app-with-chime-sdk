@@ -1,0 +1,74 @@
+# template.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Serverless Meetings with Amazon Chime Demo
+Globals:
+  Function:
+    Runtime: nodejs12.x
+    Timeout: 30
+    MemorySize: 128
+Resources:
+  # Create Chime Resources Access Policy
+  ChimeMeetingsAccessPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ChimeMeetingsAccess
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - 'chime:CreateMeeting'
+              - 'chime:DeleteMeeting'
+              - 'chime:GetMeeting'
+              - 'chime:ListMeetings'
+              - 'chime:BatchCreateAttendee'
+              - 'chime:CreateAttendee'
+              - 'chime:DeleteAttendee'
+              - 'chime:GetAttendee'
+              - 'chime:ListAttendees'
+            Resource: '*'
+      Roles:
+        # Which roles will have this policy
+        - Ref: MeetingJoinLambdaRole
+        - Ref: MeetingEndLambdaRole
+  MeetingIndexLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handlers.index
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            # since it is a static page, proxy+ will redirect all resources to that endpoint
+            Path: /{proxy+}
+            Method: GET
+            Auth:
+              # If you don't specify an empty authorizer, API Gateway requests an API Key by default
+              Authorizer: null
+  # Join function definition
+  MeetingJoinLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers.join
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /join
+            Method: POST
+  # End function definition
+  MeetingEndLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers.end
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /end
+            Method: POST
+Outputs:
+  ApiURL:
+    Description: "API endpoint URL for Prod environment"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
