@@ -37,7 +37,7 @@ if (!isMeetingHost) {
 startButton.style.display = "block";
 
 async function start() {
-    if (meetingSession) {
+    if (window.meetingSession) {
         return
     }
     try {
