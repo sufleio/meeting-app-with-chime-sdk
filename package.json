@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.743.0",
+    "aws-sdk": "^2.814.0",
     "serverless-aws-static-file-handler": "^2.0.5",
     "uuid": "^8.3.0"
   }
